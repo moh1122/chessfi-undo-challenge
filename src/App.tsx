@@ -130,8 +130,8 @@ function App() {
       const moveDetails = { from, to, promotion };
       game.move(moveDetails);
       
-      // Create a new Chess instance to properly update state
-      const newGame = new Chess(game.fen());
+      const newGame = new Chess();
+      newGame.loadPgn(game.pgn());
       setGame(newGame);
       
       // Update lastMove for highlighting
@@ -168,9 +168,13 @@ function App() {
     
     const moveUndone = game.undo();
     if (moveUndone) {
-      // Create a new Chess instance to properly update state
-      const newGame = new Chess(game.fen());
+      
+      const newGame = new Chess();
+      newGame.loadPgn(game.pgn());
       setGame(newGame);
+      
+      setSelectedSquare(null);
+      setValidMoves([]);
     }
   };
 

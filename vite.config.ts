@@ -1,19 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
-import vtcof from 'vite-configs-viewer'
 
 export default defineConfig({
-  plugins: [react(), vtcof()],
+  plugins: [react()],
   base: '',
   server: {
     port: 3000,
     watch: {
       usePolling: true,
-    },
-    static: {
-      directory: 'public',
-      serveDirectory: true
     }
   },
   build: {
